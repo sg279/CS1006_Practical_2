@@ -4,6 +4,5 @@ public abstract class Building {
     int gasCost;
     int buildTime;
     Building[] dependentOn;
-    int supplyProvided;
 
 }
