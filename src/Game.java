@@ -14,6 +14,12 @@ public class Game {
     int stargate;
     int probe;
     int zealot;
+    int stalker;
+    int sentry;
+    int observer;
+    int immortal;
+    int phoenix;
+    int voidRay;
     int gasMiners;
     int mineralMiners;
     int availableNexus;
