@@ -12,12 +12,15 @@ public class Game {
     int cyberneticsCore;
     int roboticsFacility;
     int stargate;
+    int probe;
+    int zealot;
     int gasMiners;
     int mineralMiners;
     int availableNexus;
     int availableGateway;
     int availableRobotics;
     int availableStargate;
+    int availabeProbe;
 
     ArrayList<Event> calendar = new ArrayList<>();
 
