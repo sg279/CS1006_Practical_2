@@ -13,6 +13,7 @@ public class Gateway extends Building {
     }
     public void build(Game game){
         game.gateway++;
+        game.availableGateway++;
     }
 
 }
