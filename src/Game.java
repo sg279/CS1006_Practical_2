@@ -146,7 +146,7 @@ public class Game {
             this.possibleMoves.add(possibleGame);
             this.possibleMoves.add(possibleGame2);
         }
-        this.possibleMoves.add(this);
+        this.possibleMoves.add(new Game(this));
     }
 
 }
