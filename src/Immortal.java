@@ -1,8 +1,8 @@
-public class Immortal {
-    static int mineralCost=250;
-    static int gasCost=100;
-    static int buildTime=55;
-    static Building[] dependentOn;
+public class Immortal extends Unit{
+    private int mineralCost=250;
+    private int gasCost=100;
+    private int buildTime=55;
+    private Building[] dependentOn;
     public boolean canBeBuilt(Game game){
         if (game.minerals>=this.mineralCost&&game.availableRobotics>=1){
             return true;

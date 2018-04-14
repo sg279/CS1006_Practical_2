@@ -1,8 +1,20 @@
 public abstract class Buildable {
-    static int mineralCost;
-    static int gasCost;
-    static int buildTime;
-    static Building[] dependentOn;
+    private int mineralCost;
+    private int gasCost;
+    private int buildTime;
+    private Building[] dependentOn;
     abstract boolean canBeBuilt(Game game);
     abstract void build(Game game);
+
+    public int getBuildTime() {
+        return buildTime;
+    }
+
+    public int getGasCost() {
+        return gasCost;
+    }
+
+    public int getMineralCost() {
+        return mineralCost;
+    }
 }

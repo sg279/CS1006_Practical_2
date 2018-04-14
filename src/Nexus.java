@@ -1,7 +1,7 @@
 public class Nexus extends Building {
-    static int mineralCost=400;
-    static int gasCost=0;
-    static int buildTime=100;
+    private int mineralCost=400;
+    private int gasCost=0;
+    private int buildTime=100;
 
     public boolean canBeBuilt(Game game){
         if (game.minerals>=this.mineralCost){

@@ -1,8 +1,8 @@
 public class Probe extends Unit{
-    static int mineralCost=40;
-    static int gasCost=0;
-    static int buildTime=15;
-    static Building[] dependentOn;
+    private int mineralCost=40;
+    private int gasCost=0;
+    private int buildTime=15;
+    private Building[] dependentOn;
     Building builtFrom;
     public boolean canBeBuilt(Game game){
         if (game.minerals>=this.mineralCost&&game.availableNexus>=1){

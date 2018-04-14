@@ -1,8 +1,8 @@
-public class VoidRay {
-    static int mineralCost=250;
-    static int gasCost=150;
-    static int buildTime=60;
-    static Building[] dependentOn;
+public class VoidRay extends Unit{
+    private int mineralCost=250;
+    private int gasCost=150;
+    private int buildTime=60;
+    private Building[] dependentOn;
     public boolean canBeBuilt(Game game){
         if (game.minerals>=this.mineralCost&&game.availableStargate>=1){
             return true;

@@ -1,8 +1,8 @@
-public class Phoenix {
-    static int mineralCost=150;
-    static int gasCost=100;
-    static int buildTime=35;
-    static Building[] dependentOn;
+public class Phoenix extends Unit{
+    private int mineralCost=150;
+    private int gasCost=100;
+    private int buildTime=35;
+    private Building[] dependentOn;
     public boolean canBeBuilt(Game game){
         if (game.minerals>=this.mineralCost&&game.availableStargate>=1){
             return true;

@@ -1,8 +1,8 @@
-public class Sentry {
-    static int mineralCost=50;
-    static int gasCost=100;
-    static int buildTime=37;
-    static Building[] dependentOn;
+public class Sentry extends Unit{
+    private int mineralCost=50;
+    private int gasCost=100;
+    private int buildTime=37;
+    private Building[] dependentOn;
     public boolean canBeBuilt(Game game){
         if (game.minerals>=this.mineralCost&&game.availableGateway>=1){
             return true;
