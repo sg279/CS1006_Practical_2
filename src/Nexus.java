@@ -15,4 +15,16 @@ public class Nexus extends Building {
         game.nexus++;
     }
 
+    public int getBuildTime() {
+        return buildTime;
+    }
+
+    public int getGasCost() {
+        return gasCost;
+    }
+
+    public int getMineralCost() {
+        return mineralCost;
+    }
+
 }

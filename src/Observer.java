@@ -18,4 +18,16 @@ public class Observer extends Unit{
     public void startBuild(Game game){
         game.availableRobotics--;
     }
+
+    public int getBuildTime() {
+        return buildTime;
+    }
+
+    public int getGasCost() {
+        return gasCost;
+    }
+
+    public int getMineralCost() {
+        return mineralCost;
+    }
 }

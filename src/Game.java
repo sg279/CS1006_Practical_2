@@ -28,8 +28,8 @@ public class Game {
     int availableStargate;
     int availabeProbe;
 
-    ArrayList<Event> calendar = new ArrayList<>();
-    ArrayList<Game> possibleMoves = new ArrayList<>();
+    private ArrayList<Event> calendar = new ArrayList<>();
+    private ArrayList<Game> possibleMoves = new ArrayList<>();
 
     public void startBuilding(Buildable buildable){
         this.minerals-=buildable.getMineralCost();
@@ -94,7 +94,7 @@ public class Game {
         availableRobotics=game.availableRobotics;
         availableStargate=game.availableStargate;
         availabeProbe=game.availabeProbe;
-        calendar = game.calendar;
+        calendar = new ArrayList<Event>(game.calendar);
     }
 
     public Game(){

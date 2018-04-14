@@ -18,4 +18,16 @@ public class Stalker extends Unit{
     public void startBuild(Game game){
         game.availableGateway--;
     }
+
+    public int getBuildTime() {
+        return buildTime;
+    }
+
+    public int getGasCost() {
+        return gasCost;
+    }
+
+    public int getMineralCost() {
+        return mineralCost;
+    }
 }

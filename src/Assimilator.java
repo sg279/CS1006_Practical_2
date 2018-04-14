@@ -15,4 +15,16 @@ public class Assimilator extends Building {
         game.assimilator++;
     }
 
+    public int getBuildTime() {
+        return buildTime;
+    }
+
+    public int getGasCost() {
+        return gasCost;
+    }
+
+    public int getMineralCost() {
+        return mineralCost;
+    }
+
 }

@@ -20,4 +20,16 @@ public class Probe extends Unit{
     public void startBuild(Game game){
         game.availableNexus--;
     }
+
+    public int getBuildTime() {
+        return buildTime;
+    }
+
+    public int getGasCost() {
+        return gasCost;
+    }
+
+    public int getMineralCost() {
+        return mineralCost;
+    }
 }

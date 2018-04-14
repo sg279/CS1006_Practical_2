@@ -15,4 +15,16 @@ public class CyberneticsCore extends Building {
         game.cyberneticsCore++;
     }
 
+    public int getBuildTime() {
+        return buildTime;
+    }
+
+    public int getGasCost() {
+        return gasCost;
+    }
+
+    public int getMineralCost() {
+        return mineralCost;
+    }
+
 }

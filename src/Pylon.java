@@ -15,4 +15,16 @@ public class Pylon extends Building {
         game.pylon++;
     }
 
+    public int getBuildTime() {
+        return buildTime;
+    }
+
+    public int getGasCost() {
+        return gasCost;
+    }
+
+    public int getMineralCost() {
+        return mineralCost;
+    }
+
 }
