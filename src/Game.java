@@ -125,7 +125,7 @@ public class Game {
         availabeProbe=1;
     }
 
-    public void getPossibleMoves(){
+    public ArrayList<Game> getPossibleMoves(){
         AllBuildables allBuildables = new AllBuildables();
         allBuildables.addBuildables();
 
@@ -147,6 +147,7 @@ public class Game {
             this.possibleMoves.add(possibleGame2);
         }
         this.possibleMoves.add(new Game(this));
+        return this.possibleMoves;
     }
 
 }
