@@ -1,20 +1,23 @@
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class CS1006Practical3 {
     public static void main (String[] args){
 
         Game game = new Game();
-        ArrayList<Game> games = new ArrayList<Game>();
+        Set<Game> games = new HashSet<Game>() {
+        };
         games.add(game);
         //game.getPossibleMoves();
         System.out.println("1");
         Boolean goalCompleted=false;
         while(!goalCompleted){
-            ArrayList<Game> temp = new ArrayList<>();
+            Set<Game> temp = new HashSet<Game>();
             for (Game possibleGame: games
                  ) {
-                if (possibleGame.pylon==2){
+                if (possibleGame.zealot==1){
                     System.out.println("complete");
                     goalCompleted=true;
                 }

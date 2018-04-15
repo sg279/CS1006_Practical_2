@@ -99,15 +99,15 @@ public class Game {
 
     public Game(){
         time=0;
-        minerals=300;
-        gas=300;
+        minerals=50;
+        gas=0;
         nexus=1;
-        pylon=1;
-        assimilator=1;
-        gateway=1;
-        cyberneticsCore=1;
-        roboticsFacility=1;
-        stargate=1;
+        pylon=0;
+        assimilator=0;
+        gateway=0;
+        cyberneticsCore=0;
+        roboticsFacility=0;
+        stargate=0;
         probe=6;
         zealot=0;
         stalker=0;
@@ -116,13 +116,13 @@ public class Game {
         immortal=0;
         phoenix=0;
         voidRay=0;
-        gasMiners=3;
-        mineralMiners=3;
+        gasMiners=0;
+        mineralMiners=0;
         availableNexus=1;
-        availableGateway=1;
-        availableRobotics=1;
-        availableStargate=1;
-        availabeProbe=1;
+        availableGateway=0;
+        availableRobotics=0;
+        availableStargate=0;
+        availabeProbe=6;
     }
 
     public ArrayList<Game> getPossibleMoves(){
@@ -141,10 +141,12 @@ public class Game {
         if(this.availabeProbe>=1){
             Game possibleGame = new Game(this);
             possibleGame.startMining();
-            Game possibleGame2 = new Game(this);
-            possibleGame2.startGasMining();
             this.possibleMoves.add(possibleGame);
-            this.possibleMoves.add(possibleGame2);
+            if(this.gasMiners<this.assimilator*3){
+                Game possibleGame2 = new Game(this);
+                possibleGame2.startGasMining();
+                this.possibleMoves.add(possibleGame2);
+            }
         }
         this.possibleMoves.add(new Game(this));
         return this.possibleMoves;
