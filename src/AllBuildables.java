@@ -20,4 +20,15 @@ public class AllBuildables {
         this.allBuildables.add(new Phoenix());
         this.allBuildables.add(new VoidRay());
     }
+
+    public boolean isUseful(Buildable buildable,ArrayList<Buildable> useful){
+        Boolean isUseful = false;
+        for (Buildable i: useful
+             ) {
+            if(i.getClass().equals(buildable.getClass())){
+                isUseful=true;
+            }
+        }
+        return isUseful;
+    }
 }

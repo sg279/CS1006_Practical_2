@@ -58,11 +58,10 @@ public class Game {
         this.time++;
         this.minerals+=(this.mineralMiners*41.0/60.0)-(this.mineralMiners%2)*21.0/60.0;
         this.gas+=this.gasMiners*38/60;
-        for (Event event: this.calendar
-             ) {
-            if(event.time==this.time){
-                event.buildable.build(this);
-                this.calendar.remove(event);
+        for (int i=0; i<calendar.size(); i++) {
+            if(calendar.get(i).time==this.time){
+                calendar.get(i).buildable.build(this);
+                this.calendar.remove(i);
             }
 
         }
@@ -125,13 +124,13 @@ public class Game {
         availabeProbe=6;
     }
 
-    public ArrayList<Game> getPossibleMoves(){
+    public ArrayList<Game> getPossibleMoves(ArrayList<Buildable> useful){
         AllBuildables allBuildables = new AllBuildables();
         allBuildables.addBuildables();
 
         this.tick();
         for(int i=0; i<allBuildables.allBuildables.size();i++){
-            if(allBuildables.allBuildables.get(i).canBeBuilt(this)){
+            if(allBuildables.allBuildables.get(i).getMineralCost()>this.minerals-(this.mineralMiners*41.0/60.0)+(this.mineralMiners%2)*21.0/60.0&&allBuildables.isUseful(allBuildables.allBuildables.get(i),useful)&&allBuildables.allBuildables.get(i).canBeBuilt(this)){
                 Game possibleGame = new Game(this);
                 possibleGame.startBuilding(allBuildables.allBuildables.get(i));
                 this.possibleMoves.add(possibleGame);
@@ -148,7 +147,9 @@ public class Game {
                 this.possibleMoves.add(possibleGame2);
             }
         }
-        this.possibleMoves.add(new Game(this));
+        else{
+            this.possibleMoves.add(new Game(this));
+        }
         return this.possibleMoves;
     }
 
