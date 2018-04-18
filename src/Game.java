@@ -62,6 +62,8 @@ public class Game {
             if(calendar.get(i).time==this.time){
                 calendar.get(i).buildable.build(this);
                 this.calendar.remove(i);
+                i--;
+                int g;
             }
 
         }
@@ -132,6 +134,9 @@ public class Game {
         for(int i=0; i<allBuildables.allBuildables.size();i++){
             if(allBuildables.allBuildables.get(i).getMineralCost()>this.minerals-(this.mineralMiners*41.0/60.0)+(this.mineralMiners%2)*21.0/60.0&&allBuildables.isUseful(allBuildables.allBuildables.get(i),useful)&&allBuildables.allBuildables.get(i).canBeBuilt(this)){
                 Game possibleGame = new Game(this);
+                if(allBuildables.allBuildables.get(i).getClass().equals(new Zealot().getClass())){
+                    System.out.println("good");
+                }
                 possibleGame.startBuilding(allBuildables.allBuildables.get(i));
                 this.possibleMoves.add(possibleGame);
             }

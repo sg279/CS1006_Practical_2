@@ -4,7 +4,7 @@ public class Pylon extends Building {
     private int buildTime=25;
     private Building[] dependentOn;
     public boolean canBeBuilt(Game game){
-        if (game.minerals>=this.mineralCost){
+        if (game.minerals>=this.mineralCost&&game.pylon==0){
             return true;
         }
         else{
