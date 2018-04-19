@@ -28,6 +28,7 @@ public class Game {
     int availableStargate;
     int availabeProbe;
     ArrayList<Buildable> buildOrder = new ArrayList<>();
+    ArrayList<Buildable> didntBuild = new ArrayList<>();
 
     private ArrayList<Event> calendar = new ArrayList<>();
     private ArrayList<Game> possibleMoves = new ArrayList<>();
@@ -97,7 +98,9 @@ public class Game {
         availableRobotics=game.availableRobotics;
         availableStargate=game.availableStargate;
         availabeProbe=game.availabeProbe;
-        calendar = new ArrayList<Event>(game.calendar);
+        calendar = new ArrayList<>(game.calendar);
+        buildOrder=new ArrayList<>(game.buildOrder);
+        didntBuild= new ArrayList<>(game.didntBuild);
     }
 
     public Game(){
@@ -134,7 +137,9 @@ public class Game {
 
         this.tick();
         for(int i=0; i<allBuildables.allBuildables.size();i++){
-            if((allBuildables.allBuildables.get(i).getMineralCost()>this.minerals-(this.mineralMiners*41.0/60.0)+(this.mineralMiners%2)*21.0/60.0||!this.hasBeenBuilt(allBuildables.allBuildables.get(i)))&&allBuildables.isUseful(allBuildables.allBuildables.get(i),useful)&&allBuildables.allBuildables.get(i).canBeBuilt(this)){
+            Buildable buildable = allBuildables.allBuildables.get(i);
+            //(buildable.getMineralCost()>this.minerals-(this.mineralMiners*41.0/60.0)+(this.mineralMiners%2)*21.0/60.0||!this.hasBeenBuilt(buildable))
+            if((!didntBuild(buildable)&&allBuildables.isUseful(buildable,useful)&&buildable.canBeBuilt(this))){
                 Game possibleGame = new Game(this);
                 if(allBuildables.allBuildables.get(i).getClass().equals(new Zealot().getClass())){
                     System.out.println("good"+this.time);
@@ -155,15 +160,32 @@ public class Game {
             }
         }
         else{
+            this.didntBuild.clear();
+            for(int i=0; i<allBuildables.allBuildables.size();i++){
+                if(allBuildables.allBuildables.get(i).canBeBuilt(this)){
+                    didntBuild.add(allBuildables.allBuildables.get(i));
+                }
+            }
             this.possibleMoves.add(new Game(this));
         }
         return this.possibleMoves;
     }
 
+    public Boolean didntBuild(Buildable buildable){
+        Boolean didntBuild=false;
+        for (Buildable item: this.didntBuild
+             ) {
+            if(item.getClass().equals(buildable.getClass())){
+                didntBuild=true;
+            }
+        }
+        return didntBuild;
+    }
+
     public Boolean hasBeenBuilt(Buildable buildable){
         Boolean beenBuilt=false;
         for (Buildable item: this.buildOrder
-             ) {
+                ) {
             if(item.getClass().equals(buildable.getClass())){
                 beenBuilt=true;
             }
