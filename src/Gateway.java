@@ -1,7 +1,7 @@
 public class Gateway extends Building {
-    private int mineralCost=75;
+    private int mineralCost=150;
     private int gasCost=0;
-    private int buildTime=30;
+    private int buildTime=65;
     private Building[] dependentOn;
     public boolean canBeBuilt(Game game){
         if (game.minerals>=this.mineralCost&&game.pylon>=1){

@@ -27,11 +27,13 @@ public class Game {
     int availableRobotics;
     int availableStargate;
     int availabeProbe;
+    ArrayList<Buildable> buildOrder = new ArrayList<>();
 
     private ArrayList<Event> calendar = new ArrayList<>();
     private ArrayList<Game> possibleMoves = new ArrayList<>();
 
     public void startBuilding(Buildable buildable){
+        this.buildOrder.add(buildable);
         this.minerals-=buildable.getMineralCost();
         this.gas-=buildable.getGasCost();
         Event event = new Event(buildable, this.time+buildable.getBuildTime());
@@ -118,12 +120,12 @@ public class Game {
         phoenix=0;
         voidRay=0;
         gasMiners=0;
-        mineralMiners=0;
+        mineralMiners=6;
         availableNexus=1;
         availableGateway=0;
         availableRobotics=0;
         availableStargate=0;
-        availabeProbe=6;
+        availabeProbe=0;
     }
 
     public ArrayList<Game> getPossibleMoves(ArrayList<Buildable> useful){
@@ -132,10 +134,10 @@ public class Game {
 
         this.tick();
         for(int i=0; i<allBuildables.allBuildables.size();i++){
-            if(allBuildables.allBuildables.get(i).getMineralCost()>this.minerals-(this.mineralMiners*41.0/60.0)+(this.mineralMiners%2)*21.0/60.0&&allBuildables.isUseful(allBuildables.allBuildables.get(i),useful)&&allBuildables.allBuildables.get(i).canBeBuilt(this)){
+            if((allBuildables.allBuildables.get(i).getMineralCost()>this.minerals-(this.mineralMiners*41.0/60.0)+(this.mineralMiners%2)*21.0/60.0||!this.hasBeenBuilt(allBuildables.allBuildables.get(i)))&&allBuildables.isUseful(allBuildables.allBuildables.get(i),useful)&&allBuildables.allBuildables.get(i).canBeBuilt(this)){
                 Game possibleGame = new Game(this);
                 if(allBuildables.allBuildables.get(i).getClass().equals(new Zealot().getClass())){
-                    System.out.println("good");
+                    System.out.println("good"+this.time);
                 }
                 possibleGame.startBuilding(allBuildables.allBuildables.get(i));
                 this.possibleMoves.add(possibleGame);
@@ -156,6 +158,17 @@ public class Game {
             this.possibleMoves.add(new Game(this));
         }
         return this.possibleMoves;
+    }
+
+    public Boolean hasBeenBuilt(Buildable buildable){
+        Boolean beenBuilt=false;
+        for (Buildable item: this.buildOrder
+             ) {
+            if(item.getClass().equals(buildable.getClass())){
+                beenBuilt=true;
+            }
+        }
+        return beenBuilt;
     }
 
 }
