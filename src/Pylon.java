@@ -1,8 +1,11 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Pylon extends Building {
     private int mineralCost=100;
     private int gasCost=0;
     private int buildTime=25;
-    private Building[] dependentOn;
+    ArrayList<Building> dependentOn = new ArrayList<Building>();
     public boolean canBeBuilt(Game game){
         if (game.minerals>=this.mineralCost&&!game.hasBeenBuilt(this)){
             return true;
@@ -25,6 +28,10 @@ public class Pylon extends Building {
 
     public int getMineralCost() {
         return mineralCost;
+    }
+
+    public ArrayList<Building> getDependentOn() {
+        return dependentOn;
     }
 
 }

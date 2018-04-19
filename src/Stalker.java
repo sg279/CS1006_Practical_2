@@ -1,10 +1,13 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Stalker extends Unit{
     private int mineralCost=125;
     private int gasCost=50;
     private int buildTime=42;
-    private Building[] dependentOn;
+    ArrayList<Building> dependentOn = new ArrayList<Building>(Arrays.asList(new Gateway(), new CyberneticsCore()));
     public boolean canBeBuilt(Game game){
-        if (game.minerals>=this.mineralCost&&game.availableGateway>=1&&game.cyberneticsCore>=1){
+        if (game.minerals>=this.mineralCost&&game.gas>=this.gasCost&&game.availableGateway>=1&&game.cyberneticsCore>=1){
             return true;
         }
         else{
@@ -29,5 +32,9 @@ public class Stalker extends Unit{
 
     public int getMineralCost() {
         return mineralCost;
+    }
+
+    public ArrayList<Building> getDependentOn() {
+        return dependentOn;
     }
 }

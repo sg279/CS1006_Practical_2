@@ -1,8 +1,11 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Phoenix extends Unit{
     private int mineralCost=150;
     private int gasCost=100;
     private int buildTime=35;
-    private Building[] dependentOn;
+    ArrayList<Building> dependentOn = new ArrayList<Building>(Arrays.asList(new Stargate()));
     public boolean canBeBuilt(Game game){
         if (game.minerals>=this.mineralCost&&game.availableStargate>=1){
             return true;
@@ -29,5 +32,9 @@ public class Phoenix extends Unit{
 
     public int getMineralCost() {
         return mineralCost;
+    }
+
+    public ArrayList<Building> getDependentOn() {
+        return dependentOn;
     }
 }

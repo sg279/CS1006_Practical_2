@@ -1,8 +1,12 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Probe extends Unit{
     private int mineralCost=40;
     private int gasCost=0;
     private int buildTime=15;
-    private Building[] dependentOn;
+    ArrayList<Building> dependentOn = new ArrayList<Building>(Arrays.asList(new Nexus()));
+
     Building builtFrom;
     public boolean canBeBuilt(Game game){
         if (game.minerals>=this.mineralCost&&game.availableNexus>=1){
@@ -31,5 +35,9 @@ public class Probe extends Unit{
 
     public int getMineralCost() {
         return mineralCost;
+    }
+
+    public ArrayList<Building> getDependentOn() {
+        return dependentOn;
     }
 }

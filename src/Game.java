@@ -29,6 +29,7 @@ public class Game {
     int availabeProbe;
     ArrayList<Buildable> buildOrder = new ArrayList<>();
     ArrayList<Buildable> didntBuild = new ArrayList<>();
+    Goal goal = new Goal();
 
     private ArrayList<Event> calendar = new ArrayList<>();
     private ArrayList<Game> possibleMoves = new ArrayList<>();
@@ -43,6 +44,7 @@ public class Game {
             ((Unit) buildable).startBuild(this);
         }
         this.calendar.add(event);
+        int h=9;
     }
 
     public void startMining(){
@@ -66,7 +68,6 @@ public class Game {
                 calendar.get(i).buildable.build(this);
                 this.calendar.remove(i);
                 i--;
-                int g;
             }
 
         }
@@ -141,9 +142,6 @@ public class Game {
             //(buildable.getMineralCost()>this.minerals-(this.mineralMiners*41.0/60.0)+(this.mineralMiners%2)*21.0/60.0||!this.hasBeenBuilt(buildable))
             if((!didntBuild(buildable)&&allBuildables.isUseful(buildable,useful)&&buildable.canBeBuilt(this))){
                 Game possibleGame = new Game(this);
-                if(allBuildables.allBuildables.get(i).getClass().equals(new Zealot().getClass())){
-                    System.out.println("good"+this.time);
-                }
                 possibleGame.startBuilding(allBuildables.allBuildables.get(i));
                 this.possibleMoves.add(possibleGame);
             }

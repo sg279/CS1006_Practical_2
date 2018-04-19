@@ -1,8 +1,10 @@
+import java.util.ArrayList;
+
 public abstract class Buildable {
     private int mineralCost;
     private int gasCost;
     private int buildTime;
-    private Building[] dependentOn;
+    private ArrayList<Building> dependentOn;
     abstract boolean canBeBuilt(Game game);
     abstract void build(Game game);
 
@@ -16,5 +18,9 @@ public abstract class Buildable {
 
     public int getMineralCost() {
         return mineralCost;
+    }
+
+    public ArrayList<Building> getDependentOn() {
+        return dependentOn;
     }
 }

@@ -1,8 +1,11 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Assimilator extends Building {
     private int mineralCost=75;
     private int gasCost=0;
     private int buildTime=30;
-    private Building[] dependentOn;
+    ArrayList<Building> dependentOn = new ArrayList<>();
     public boolean canBeBuilt(Game game){
         if (game.minerals>=this.mineralCost){
             return true;
@@ -12,6 +15,10 @@ public class Assimilator extends Building {
         }
     }
     public void build(Game game){
+        if(game.mineralMiners>=3){
+            game.mineralMiners-=3;
+            game.gasMiners+=3;
+        }
         game.assimilator++;
     }
 
@@ -25,6 +32,10 @@ public class Assimilator extends Building {
 
     public int getMineralCost() {
         return mineralCost;
+    }
+
+    public ArrayList<Building> getDependentOn() {
+        return dependentOn;
     }
 
 }

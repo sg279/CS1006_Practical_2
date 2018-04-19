@@ -10,19 +10,19 @@ public class CS1006Practical3 {
         Set<Game> games = new HashSet<Game>() {
         };
         games.add(game);
-        //game.getPossibleMoves();
-        System.out.println("1");
         Boolean goalCompleted=false;
         ArrayList<Buildable> useful = new ArrayList<>();
         useful.add(new Gateway());
         useful.add(new Probe());
-        useful.add(new Zealot());
+        useful.add(new Stalker());
         useful.add(new Pylon());
+        useful.add(new CyberneticsCore());
+        useful.add(new Assimilator());
         while(!goalCompleted){
             Set<Game> temp = new HashSet<Game>();
             for (Game possibleGame: games
                  ) {
-                if (possibleGame.zealot==1){
+                if (possibleGame.stalker==1){
                     System.out.println("complete");
                     goalCompleted=true;
                 }

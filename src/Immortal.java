@@ -1,8 +1,11 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Immortal extends Unit{
     private int mineralCost=250;
     private int gasCost=100;
     private int buildTime=55;
-    private Building[] dependentOn;
+    ArrayList<Building> dependentOn = new ArrayList<Building>(Arrays.asList(new RoboticsFacility()));
     public boolean canBeBuilt(Game game){
         if (game.minerals>=this.mineralCost&&game.availableRobotics>=1){
             return true;
@@ -29,5 +32,9 @@ public class Immortal extends Unit{
 
     public int getMineralCost() {
         return mineralCost;
+    }
+
+    public ArrayList<Building> getDependentOn() {
+        return dependentOn;
     }
 }

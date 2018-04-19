@@ -1,8 +1,11 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Sentry extends Unit{
     private int mineralCost=50;
     private int gasCost=100;
     private int buildTime=37;
-    private Building[] dependentOn;
+    ArrayList<Building> dependentOn = new ArrayList<Building>(Arrays.asList(new Gateway()));
     public boolean canBeBuilt(Game game){
         if (game.minerals>=this.mineralCost&&game.availableGateway>=1){
             return true;
@@ -29,5 +32,9 @@ public class Sentry extends Unit{
 
     public int getMineralCost() {
         return mineralCost;
+    }
+
+    public ArrayList<Building> getDependentOn() {
+        return dependentOn;
     }
 }
