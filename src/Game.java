@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashSet;
 
 public class Game {
     int time;
@@ -29,7 +30,7 @@ public class Game {
     int availabeProbe;
     ArrayList<Buildable> buildOrder = new ArrayList<>();
     ArrayList<Buildable> didntBuild = new ArrayList<>();
-    Goal goal = new Goal();
+    Goal goal;
 
     private ArrayList<Event> calendar = new ArrayList<>();
     private ArrayList<Game> possibleMoves = new ArrayList<>();
@@ -102,9 +103,10 @@ public class Game {
         calendar = new ArrayList<>(game.calendar);
         buildOrder=new ArrayList<>(game.buildOrder);
         didntBuild= new ArrayList<>(game.didntBuild);
+        this.goal=game.goal;
     }
 
-    public Game(){
+    public Game(Goal goal){
         time=0;
         minerals=50;
         gas=0;
@@ -130,9 +132,10 @@ public class Game {
         availableRobotics=0;
         availableStargate=0;
         availabeProbe=0;
+        this.goal = goal;
     }
 
-    public ArrayList<Game> getPossibleMoves(ArrayList<Buildable> useful){
+    public ArrayList<Game> getPossibleMoves(HashSet<Buildable> useful){
         AllBuildables allBuildables = new AllBuildables();
         allBuildables.addBuildables();
 

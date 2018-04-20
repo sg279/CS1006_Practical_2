@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class AllBuildables {
     ArrayList<Buildable> allBuildables = new ArrayList<>();
@@ -21,7 +22,7 @@ public class AllBuildables {
         this.allBuildables.add(new VoidRay());
     }
 
-    public boolean isUseful(Buildable buildable,ArrayList<Buildable> useful){
+    public boolean isUseful(Buildable buildable,HashSet<Buildable> useful){
         Boolean isUseful = false;
         for (Buildable i: useful
              ) {

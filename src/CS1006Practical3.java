@@ -1,28 +1,29 @@
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
 public class CS1006Practical3 {
     public static void main (String[] args){
 
-        Game game = new Game();
-        Set<Game> games = new HashSet<Game>() {
-        };
-        games.add(game);
+        ArrayList<Buildable> goalBuildables = new ArrayList<Buildable>(Arrays.asList(new Zealot()));
+        Goal goal = new Goal(goalBuildables);
         Boolean goalCompleted=false;
-        ArrayList<Buildable> useful = new ArrayList<>();
-        useful.add(new Gateway());
+        HashSet<Buildable> useful = new HashSet<>(goalBuildables);
         useful.add(new Probe());
-        useful.add(new Stalker());
-        useful.add(new Pylon());
-        useful.add(new CyberneticsCore());
-        useful.add(new Assimilator());
+        for (Buildable goalBuildable: goalBuildables
+             ) {
+            useful.addAll(goalBuildable.getDependentOn());
+        }
+        Game game = new Game(goal);
+        Set<Game> games = new HashSet<Game>() {};
+        games.add(game);
         while(!goalCompleted){
             Set<Game> temp = new HashSet<Game>();
             for (Game possibleGame: games
                  ) {
-                if (possibleGame.stalker==1){
+                if (goal.goalCompleted(possibleGame)){
                     System.out.println("complete");
                     goalCompleted=true;
                 }
