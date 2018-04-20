@@ -7,7 +7,7 @@ import java.util.Set;
 public class CS1006Practical3 {
     public static void main (String[] args){
 
-        ArrayList<Buildable> goalBuildables = new ArrayList<Buildable>(Arrays.asList(new Zealot()));
+        ArrayList<Buildable> goalBuildables = new ArrayList<Buildable>(Arrays.asList(new Stalker(),new Stalker()));
         Goal goal = new Goal(goalBuildables);
         Boolean goalCompleted=false;
         HashSet<Buildable> useful = new HashSet<>(goalBuildables);
@@ -20,7 +20,7 @@ public class CS1006Practical3 {
         Set<Game> games = new HashSet<Game>() {};
         games.add(game);
         while(!goalCompleted){
-            Set<Game> temp = new HashSet<Game>();
+            ArrayList<Game> temp = new ArrayList<>();
             for (Game possibleGame: games
                  ) {
                 if (goal.goalCompleted(possibleGame)){
@@ -29,6 +29,9 @@ public class CS1006Practical3 {
                 }
                 else{
                     temp.addAll(possibleGame.getPossibleMoves(useful));
+                    while(temp.size()>1000){
+                        temp.remove((int) Math.floor(Math.random() * 1001));
+                    }
                 }
             }
             games.clear();

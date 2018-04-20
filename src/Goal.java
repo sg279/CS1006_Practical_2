@@ -22,21 +22,21 @@ public class Goal {
 
     public boolean goalCompleted(Game game){
         Boolean completed = false;
-        if(nexus==game.nexus &&
-        pylon==game.pylon &&
-        assimilator==game.assimilator &&
-        gateway==game.gateway &&
-        cyberneticsCore==game.cyberneticsCore &&
-        roboticsFacility==game.roboticsFacility &&
-        stargate==game.stargate &&
-        probe>=game.probe &&
-        zealot==game.zealot &&
-        stalker==game.stalker &&
-        sentry==game.sentry &&
-        observer==game.observer &&
-        immortal==game.immortal &&
-        phoenix==game.phoenix &&
-        voidRay==game.voidRay){
+        if(nexus<=game.nexus &&
+        pylon<=game.pylon &&
+        assimilator<=game.assimilator &&
+        gateway<=game.gateway &&
+        cyberneticsCore<=game.cyberneticsCore &&
+        roboticsFacility<=game.roboticsFacility &&
+        stargate<=game.stargate &&
+        probe<=game.probe &&
+        zealot<=game.zealot &&
+        stalker<=game.stalker &&
+        sentry<=game.sentry &&
+        observer<=game.observer &&
+        immortal<=game.immortal &&
+        phoenix<=game.phoenix &&
+        voidRay<=game.voidRay){
             completed=true;
         }
         return completed;
