@@ -13,6 +13,11 @@ public class Game {
     int cyberneticsCore;
     int roboticsFacility;
     int stargate;
+    int twilightCouncil;
+    int templarArchives;
+    int darkShrine;
+    int roboticsBay;
+    int fleetBeacon;
     int probe;
     int zealot;
     int stalker;
@@ -21,6 +26,10 @@ public class Game {
     int immortal;
     int phoenix;
     int voidRay;
+    int colossus;
+    int highTemplar;
+    int darkTemplar;
+    int carrier;
     int gasMiners;
     int mineralMiners;
     int availableNexus;
@@ -85,6 +94,11 @@ public class Game {
         cyberneticsCore=game.cyberneticsCore;
         roboticsFacility=game.roboticsFacility;
         stargate=game.stargate;
+        twilightCouncil=game.twilightCouncil;
+        templarArchives=game.templarArchives;
+        darkShrine=game.darkShrine;
+        roboticsBay=game.roboticsBay;
+        fleetBeacon=game.fleetBeacon;
         probe=game.probe;
         zealot=game.zealot;
         stalker=game.stalker;
@@ -93,6 +107,10 @@ public class Game {
         immortal=game.immortal;
         phoenix=game.phoenix;
         voidRay=game.voidRay;
+        colossus=game.colossus;
+        highTemplar=game.highTemplar;
+        darkTemplar=game.darkTemplar;
+        carrier=game.carrier;
         gasMiners=game.gasMiners;
         mineralMiners=game.mineralMiners;
         availableNexus=game.availableNexus;
@@ -117,6 +135,11 @@ public class Game {
         cyberneticsCore=0;
         roboticsFacility=0;
         stargate=0;
+        twilightCouncil=0;
+        templarArchives=0;
+        darkShrine=0;
+        roboticsBay=0;
+        fleetBeacon=0;
         probe=6;
         zealot=0;
         stalker=0;
@@ -125,6 +148,10 @@ public class Game {
         immortal=0;
         phoenix=0;
         voidRay=0;
+        colossus=0;
+        highTemplar=0;
+        darkTemplar=0;
+        carrier=0;
         gasMiners=0;
         mineralMiners=6;
         availableNexus=1;
