@@ -7,7 +7,7 @@ public class RoboticsBay extends Building {
     private int buildTime=65;
     ArrayList<Building> dependentOn = new ArrayList<Building>(Arrays.asList(new CyberneticsCore(), new RoboticsFacility(), new Pylon(), new Assimilator(), new Gateway()));
     public boolean canBeBuilt(Game game){
-        if (game.minerals>=this.mineralCost&&game.gas>=this.gasCost&&game.roboticsFacility>=1&&game.pylon>=1){
+        if (game.minerals>=this.mineralCost&&game.gas>=this.gasCost&&game.roboticsFacility>=1&&game.pylon>=1&&!game.hasBeenBuilt(this)){
             return true;
         }
         else{

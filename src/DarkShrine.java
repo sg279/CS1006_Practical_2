@@ -7,7 +7,7 @@ public class DarkShrine extends Building {
     private int buildTime=100;
     ArrayList<Building> dependentOn = new ArrayList<Building>(Arrays.asList(new CyberneticsCore(), new Gateway(), new Pylon(), new TwilightCouncil(), new Assimilator()));
     public boolean canBeBuilt(Game game){
-        if (game.minerals>=this.mineralCost&&game.gas>=this.gasCost&&game.twilightCouncil>=1&&game.pylon>=1){
+        if (game.minerals>=this.mineralCost&&game.gas>=this.gasCost&&game.twilightCouncil>=1&&game.pylon>=1&&!game.hasBeenBuilt(this)){
             return true;
         }
         else{
