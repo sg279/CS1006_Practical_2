@@ -5,9 +5,9 @@ public class Observer extends Unit{
     private int mineralCost=25;
     private int gasCost=75;
     private int buildTime=40;
-    ArrayList<Building> dependentOn = new ArrayList<Building>(Arrays.asList(new RoboticsFacility()));
+    ArrayList<Building> dependentOn = new ArrayList<Building>(Arrays.asList(new RoboticsFacility(), new CyberneticsCore(), new Gateway(), new Pylon(), new Assimilator()));
     public boolean canBeBuilt(Game game){
-        if (game.minerals>=this.mineralCost&&game.availableRobotics>=1){
+        if (game.minerals>=this.mineralCost&&game.gas>=this.gasCost&&game.availableRobotics>=1){
             return true;
         }
         else{

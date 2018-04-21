@@ -5,9 +5,9 @@ public class Immortal extends Unit{
     private int mineralCost=250;
     private int gasCost=100;
     private int buildTime=55;
-    ArrayList<Building> dependentOn = new ArrayList<Building>(Arrays.asList(new RoboticsFacility()));
+    ArrayList<Building> dependentOn = new ArrayList<Building>(Arrays.asList(new RoboticsFacility(), new CyberneticsCore(), new Pylon(), new Gateway(), new Assimilator()));
     public boolean canBeBuilt(Game game){
-        if (game.minerals>=this.mineralCost&&game.availableRobotics>=1){
+        if (game.minerals>=this.mineralCost&&game.gas>=this.gasCost&&game.availableRobotics>=1){
             return true;
         }
         else{

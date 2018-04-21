@@ -15,8 +15,14 @@ public class Assimilator extends Building {
         }
     }
     public void build(Game game){
-        if(game.mineralMiners>=3){
-            game.mineralMiners-=3;
+        if(game.availabeProbe>=3){
+            game.availabeProbe-=3;
+            game.gasMiners+=3;
+        }
+        else if(game.mineralMiners>=3){
+            int toTransfer= 3-game.availabeProbe;
+            game.mineralMiners-=toTransfer;
+            game.availabeProbe=0;
             game.gasMiners+=3;
         }
         game.assimilator++;

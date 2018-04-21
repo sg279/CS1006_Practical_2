@@ -5,7 +5,7 @@ public class VoidRay extends Unit{
     private int mineralCost=250;
     private int gasCost=150;
     private int buildTime=60;
-    ArrayList<Building> dependentOn = new ArrayList<Building>(Arrays.asList(new Stargate()));
+    ArrayList<Building> dependentOn = new ArrayList<Building>(Arrays.asList(new Stargate(), new CyberneticsCore(), new Gateway(), new Pylon(), new Assimilator()));
     public boolean canBeBuilt(Game game){
         if (game.minerals>=this.mineralCost&&game.availableStargate>=1){
             return true;

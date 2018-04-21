@@ -17,6 +17,7 @@ public class Nexus extends Building {
     }
     public void build (Game game){
         game.nexus++;
+        game.availableNexus++;
     }
 
     public int getBuildTime() {

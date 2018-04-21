@@ -5,9 +5,9 @@ public class Sentry extends Unit{
     private int mineralCost=50;
     private int gasCost=100;
     private int buildTime=37;
-    ArrayList<Building> dependentOn = new ArrayList<Building>(Arrays.asList(new Gateway()));
+    ArrayList<Building> dependentOn = new ArrayList<Building>(Arrays.asList(new Gateway(), new Pylon(), new Assimilator()));
     public boolean canBeBuilt(Game game){
-        if (game.minerals>=this.mineralCost&&game.availableGateway>=1){
+        if (game.minerals>=this.mineralCost&&game.gas>=this.gasCost&&game.availableGateway>=1){
             return true;
         }
         else{

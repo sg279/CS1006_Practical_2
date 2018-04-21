@@ -5,9 +5,9 @@ public class Phoenix extends Unit{
     private int mineralCost=150;
     private int gasCost=100;
     private int buildTime=35;
-    ArrayList<Building> dependentOn = new ArrayList<Building>(Arrays.asList(new Stargate()));
+    ArrayList<Building> dependentOn = new ArrayList<Building>(Arrays.asList(new Stargate(), new CyberneticsCore(), new Gateway(), new Pylon(), new Assimilator()));
     public boolean canBeBuilt(Game game){
-        if (game.minerals>=this.mineralCost&&game.availableStargate>=1){
+        if (game.minerals>=this.mineralCost&&game.gas>=this.gasCost&&game.availableStargate>=1){
             return true;
         }
         else{

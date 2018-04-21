@@ -2,9 +2,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Probe extends Unit{
-    private int mineralCost=40;
+    private int mineralCost=50;
     private int gasCost=0;
-    private int buildTime=15;
+    private int buildTime=17;
     ArrayList<Building> dependentOn = new ArrayList<Building>(Arrays.asList(new Nexus()));
 
     Building builtFrom;

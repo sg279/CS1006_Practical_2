@@ -8,6 +8,11 @@ public class Goal {
     int cyberneticsCore;
     int roboticsFacility;
     int stargate;
+    int twilightCouncil;
+    int templarArchives;
+    int darkShrine;
+    int roboticsBay;
+    int fleetBeacon;
     int probe;
     int zealot;
     int stalker;
@@ -16,9 +21,13 @@ public class Goal {
     int immortal;
     int phoenix;
     int voidRay;
-    int maxGateways = zealot+stalker+sentry+cyberneticsCore+gateway;
-    int maxRobotics = observer+immortal+roboticsFacility;
-    int maxStargate = phoenix+voidRay+stargate;
+    int colossus;
+    int highTemplar;
+    int darkTemplar;
+    int carrier;
+    int maxGateways = zealot+stalker+sentry+cyberneticsCore+gateway+highTemplar+darkTemplar;
+    int maxRobotics = observer+immortal+roboticsFacility+colossus;
+    int maxStargate = phoenix+voidRay+stargate+carrier;
 
     public boolean goalCompleted(Game game){
         Boolean completed = false;
@@ -29,6 +38,11 @@ public class Goal {
         cyberneticsCore<=game.cyberneticsCore &&
         roboticsFacility<=game.roboticsFacility &&
         stargate<=game.stargate &&
+        twilightCouncil<=game.twilightCouncil &&
+        templarArchives<=game.templarArchives &&
+        darkShrine<=game.darkShrine &&
+        roboticsBay<=game.roboticsBay &&
+        fleetBeacon<=game.fleetBeacon &&
         probe<=game.probe &&
         zealot<=game.zealot &&
         stalker<=game.stalker &&
@@ -36,7 +50,11 @@ public class Goal {
         observer<=game.observer &&
         immortal<=game.immortal &&
         phoenix<=game.phoenix &&
-        voidRay<=game.voidRay){
+        voidRay<=game.voidRay &&
+        colossus<=game.colossus &&
+        highTemplar<=game.highTemplar &&
+        darkTemplar<=game.darkTemplar &&
+        carrier<=game.carrier){
             completed=true;
         }
         return completed;
@@ -50,6 +68,11 @@ public class Goal {
         cyberneticsCore=0;
         roboticsFacility=0;
         stargate=0;
+        twilightCouncil=0;
+        templarArchives=0;
+        darkShrine=0;
+        roboticsBay=0;
+        fleetBeacon=0;
         probe=0;
         zealot=0;
         stalker=0;
@@ -58,6 +81,10 @@ public class Goal {
         immortal=0;
         phoenix=0;
         voidRay=0;
+        colossus=0;
+        highTemplar=0;
+        darkTemplar=0;
+        carrier=0;
 
         for (int i=0; i<goals.size(); i++){
             Class itemClass = goals.get(i).getClass();
@@ -76,8 +103,17 @@ public class Goal {
             if (itemClass.equals(Stargate.class)){this.stargate++;}
             if (itemClass.equals(VoidRay.class)){this.voidRay++;}
             if (itemClass.equals(Zealot.class)){this.zealot++;}
-            this.maxGateways = zealot+stalker+sentry+cyberneticsCore+gateway;
-            this.maxRobotics = observer+immortal+roboticsFacility;
+            if (itemClass.equals(Carrier.class)){this.carrier++;}
+            if (itemClass.equals(Colossus.class)){this.colossus++;}
+            if (itemClass.equals(DarkShrine.class)){this.darkShrine++;}
+            if (itemClass.equals(DarkTemplar.class)){this.darkTemplar++;}
+            if (itemClass.equals(FleetBeacon.class)){this.fleetBeacon++;}
+            if (itemClass.equals(HighTemplar.class)){this.highTemplar++;}
+            if (itemClass.equals(RoboticsBay.class)){this.roboticsBay++;}
+            if (itemClass.equals(TemplarArchives.class)){this.templarArchives++;}
+            if (itemClass.equals(TwilightCouncil.class)){this.twilightCouncil++;}
+            this.maxGateways = zealot+stalker+sentry+cyberneticsCore+gateway+darkTemplar+highTemplar+colossus+carrier;
+            this.maxRobotics = observer+immortal+roboticsFacility+colossus;
             this.maxStargate = phoenix+voidRay+stargate;
         }
     }

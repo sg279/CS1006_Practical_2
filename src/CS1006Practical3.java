@@ -7,7 +7,7 @@ import java.util.Set;
 public class CS1006Practical3 {
     public static void main (String[] args){
 
-        ArrayList<Buildable> goalBuildables = new ArrayList<Buildable>(Arrays.asList(new Stalker(),new Stalker()));
+        ArrayList<Buildable> goalBuildables = new ArrayList<Buildable>(Arrays.asList(new DarkTemplar(),new HighTemplar(), new Carrier()));
         Goal goal = new Goal(goalBuildables);
         Boolean goalCompleted=false;
         HashSet<Buildable> useful = new HashSet<>(goalBuildables);
