@@ -25,9 +25,9 @@ public class Goal {
     int highTemplar;
     int darkTemplar;
     int carrier;
-    int maxGateways = zealot+stalker+sentry+cyberneticsCore+gateway+highTemplar+darkTemplar;
-    int maxRobotics = observer+immortal+roboticsFacility+colossus;
-    int maxStargate = phoenix+voidRay+stargate+carrier;
+    int maxGateways;
+    int maxRobotics;
+    int maxStargate;
 
     public boolean goalCompleted(Game game){
         Boolean completed = false;
@@ -112,9 +112,25 @@ public class Goal {
             if (itemClass.equals(RoboticsBay.class)){this.roboticsBay++;}
             if (itemClass.equals(TemplarArchives.class)){this.templarArchives++;}
             if (itemClass.equals(TwilightCouncil.class)){this.twilightCouncil++;}
-            this.maxGateways = zealot+stalker+sentry+cyberneticsCore+gateway+darkTemplar+highTemplar+colossus+carrier;
-            this.maxRobotics = observer+immortal+roboticsFacility+colossus;
-            this.maxStargate = phoenix+voidRay+stargate;
+            this.maxGateways=0;
+            if(zealot>0){this.maxGateways++;}
+            if(stalker>0){this.maxGateways++;}
+            if(sentry>0){this.maxGateways++;}
+            if(cyberneticsCore>0){this.maxGateways++;}
+            if(gateway>0){this.maxGateways++;}
+            if(darkTemplar>0){this.maxGateways++;}
+            if(highTemplar>0){this.maxGateways++;}
+            if(colossus>0){this.maxGateways++;}
+            if(carrier>0){this.maxGateways++;}
+            this.maxRobotics = 0;
+            if(observer>0){this.maxRobotics++;}
+            if(immortal>0){this.maxRobotics++;}
+            if(roboticsFacility>0){this.maxRobotics++;}
+            if(colossus>0){this.maxRobotics++;}
+            this.maxStargate = 0;
+            if(phoenix>0){this.maxStargate++;}
+            if(voidRay>0){this.maxStargate++;}
+            if(stargate>0){this.maxStargate++;}
         }
     }
 }
