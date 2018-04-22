@@ -8,7 +8,19 @@ public class Immortal extends Unit{
     ArrayList<Building> dependentOn = new ArrayList<Building>(Arrays.asList(new RoboticsFacility(), new CyberneticsCore(), new Pylon(), new Gateway(), new Assimilator()));
     public boolean canBeBuilt(Game game){
         if (game.minerals>=this.mineralCost&&game.gas>=this.gasCost&&game.availableRobotics>=1){
-            return true;
+            int immortals = 0;
+            for (Buildable buildable: game.buildOrder
+                    ) {
+                if(buildable.getClass()==this.getClass()){
+                    immortals++;
+                }
+            }
+            if(immortals==game.goal.immortal){
+                return false;
+            }
+            else{
+                return true;
+            }
         }
         else{
             return false;

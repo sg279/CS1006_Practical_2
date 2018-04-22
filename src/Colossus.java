@@ -8,7 +8,19 @@ public class Colossus extends Unit{
     ArrayList<Building> dependentOn = new ArrayList<Building>(Arrays.asList(new RoboticsBay(), new CyberneticsCore(), new RoboticsFacility(), new Pylon(), new Assimilator(), new Gateway()));
     public boolean canBeBuilt(Game game){
         if (game.minerals>=this.mineralCost&&game.gas>=this.gasCost&&game.availableRobotics>=1&&game.roboticsBay>=1){
-            return true;
+            int collossi = 0;
+            for (Buildable buildable: game.buildOrder
+                    ) {
+                if(buildable.getClass()==this.getClass()){
+                    collossi++;
+                }
+            }
+            if(collossi==game.goal.colossus){
+                return false;
+            }
+            else{
+                return true;
+            }
         }
         else{
             return false;

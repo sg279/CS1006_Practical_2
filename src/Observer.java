@@ -8,7 +8,19 @@ public class Observer extends Unit{
     ArrayList<Building> dependentOn = new ArrayList<Building>(Arrays.asList(new RoboticsFacility(), new CyberneticsCore(), new Gateway(), new Pylon(), new Assimilator()));
     public boolean canBeBuilt(Game game){
         if (game.minerals>=this.mineralCost&&game.gas>=this.gasCost&&game.availableRobotics>=1){
-            return true;
+            int observers = 0;
+            for (Buildable buildable: game.buildOrder
+                    ) {
+                if(buildable.getClass()==this.getClass()){
+                    observers++;
+                }
+            }
+            if(observers==game.goal.observer){
+                return false;
+            }
+            else{
+                return true;
+            }
         }
         else{
             return false;

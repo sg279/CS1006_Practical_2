@@ -8,7 +8,19 @@ public class HighTemplar extends Unit{
     ArrayList<Building> dependentOn = new ArrayList<Building>(Arrays.asList(new CyberneticsCore(), new Gateway(), new Pylon(), new TwilightCouncil(), new Assimilator(), new TemplarArchives()));
     public boolean canBeBuilt(Game game){
         if (game.minerals>=this.mineralCost&&game.gas>=this.gasCost&&game.availableGateway>=1&&game.templarArchives>=1){
-            return true;
+            int highTemplars = 0;
+            for (Buildable buildable: game.buildOrder
+                    ) {
+                if(buildable.getClass()==this.getClass()){
+                    highTemplars++;
+                }
+            }
+            if(highTemplars==game.goal.highTemplar){
+                return false;
+            }
+            else{
+                return true;
+            }
         }
         else{
             return false;

@@ -8,7 +8,19 @@ public class Phoenix extends Unit{
     ArrayList<Building> dependentOn = new ArrayList<Building>(Arrays.asList(new Stargate(), new CyberneticsCore(), new Gateway(), new Pylon(), new Assimilator()));
     public boolean canBeBuilt(Game game){
         if (game.minerals>=this.mineralCost&&game.gas>=this.gasCost&&game.availableStargate>=1){
-            return true;
+            int phoenixes = 0;
+            for (Buildable buildable: game.buildOrder
+                    ) {
+                if(buildable.getClass()==this.getClass()){
+                    phoenixes++;
+                }
+            }
+            if(phoenixes==game.goal.phoenix){
+                return false;
+            }
+            else{
+                return true;
+            }
         }
         else{
             return false;

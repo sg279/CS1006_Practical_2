@@ -8,7 +8,19 @@ public class Carrier extends Unit{
     ArrayList<Building> dependentOn = new ArrayList<Building>(Arrays.asList(new CyberneticsCore(), new Gateway(), new Pylon(), new Assimilator(), new Stargate(), new FleetBeacon()));
     public boolean canBeBuilt(Game game){
         if (game.minerals>=this.mineralCost&&game.gas>=this.getGasCost()&&game.availableStargate>=1&&game.fleetBeacon>=1){
-            return true;
+            int carriers = 0;
+            for (Buildable buildable: game.buildOrder
+                    ) {
+                if(buildable.getClass()==this.getClass()){
+                    carriers++;
+                }
+            }
+            if(carriers==game.goal.carrier){
+                return false;
+            }
+            else{
+                return true;
+            }
         }
         else{
             return false;

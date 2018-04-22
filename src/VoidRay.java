@@ -8,7 +8,19 @@ public class VoidRay extends Unit{
     ArrayList<Building> dependentOn = new ArrayList<Building>(Arrays.asList(new Stargate(), new CyberneticsCore(), new Gateway(), new Pylon(), new Assimilator()));
     public boolean canBeBuilt(Game game){
         if (game.minerals>=this.mineralCost&&game.availableStargate>=1){
-            return true;
+            int voidRays = 0;
+            for (Buildable buildable: game.buildOrder
+                    ) {
+                if(buildable.getClass()==this.getClass()){
+                    voidRays++;
+                }
+            }
+            if(voidRays==game.goal.voidRay){
+                return false;
+            }
+            else{
+                return true;
+            }
         }
         else{
             return false;

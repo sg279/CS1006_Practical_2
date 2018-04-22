@@ -73,7 +73,8 @@ public class CS1006Practical3 {
                 if (goal.goalCompleted(possibleGame)){
                     System.out.println("complete");
                     goalCompleted = true;
-                } else {
+                }
+                else {
                     temp.addAll(possibleGame.getPossibleMoves(useful));
                     while(temp.size()>1000) {
                         temp.remove((int) Math.floor(Math.random() * 1001));
