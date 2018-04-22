@@ -3,6 +3,8 @@ import java.util.Calendar;
 import java.util.HashSet;
 
 public class Game {
+    public String buildOrderStr = "";
+
     int time;
     float minerals;
     float gas;
@@ -54,6 +56,8 @@ public class Game {
             ((Unit) buildable).startBuild(this);
         }
         this.calendar.add(event);
+
+        buildOrderStr = buildOrderStr + buildable.getClass().getName() + "\t" + time + "\n";
     }
 
     public void startMining(){
@@ -121,6 +125,7 @@ public class Game {
         buildOrder=new ArrayList<>(game.buildOrder);
         didntBuild= new ArrayList<>(game.didntBuild);
         this.goal=game.goal;
+        this.buildOrderStr = game.buildOrderStr;
     }
 
     public Game(Goal goal){

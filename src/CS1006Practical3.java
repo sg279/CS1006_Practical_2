@@ -66,7 +66,8 @@ public class CS1006Practical3 {
             for (Game possibleGame: games
                  ) {
                 if (goal.goalCompleted(possibleGame)&&!goalCompleted){
-                    System.out.println("complete");
+                    System.out.println("-----------------------------");
+                    System.out.println(possibleGame.buildOrderStr);
                     goalCompleted=true;
                 }
                 else{
