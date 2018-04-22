@@ -8,7 +8,19 @@ public class Zealot extends Unit{
     ArrayList<Building> dependentOn = new ArrayList<Building>(Arrays.asList(new Gateway(), new Pylon()));
     public boolean canBeBuilt(Game game){
         if (game.minerals>=this.mineralCost&&game.availableGateway>=1){
-            return true;
+            int zealots = 0;
+            for (Buildable buildable: game.buildOrder
+                    ) {
+                if(buildable.getClass()==this.getClass()){
+                    zealots++;
+                }
+            }
+            if(zealots==game.goal.zealot){
+                return false;
+            }
+            else{
+                return true;
+            }
         }
         else{
             return false;

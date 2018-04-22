@@ -8,7 +8,19 @@ public class Stalker extends Unit{
     ArrayList<Building> dependentOn = new ArrayList<Building>(Arrays.asList(new Gateway(), new CyberneticsCore(), new Pylon(), new Assimilator()));
     public boolean canBeBuilt(Game game){
         if (game.minerals>=this.mineralCost&&game.gas>=this.gasCost&&game.availableGateway>=1&&game.cyberneticsCore>=1){
-            return true;
+            int stalkers = 0;
+            for (Buildable buildable: game.buildOrder
+                    ) {
+                if(buildable.getClass()==this.getClass()){
+                    stalkers++;
+                }
+            }
+            if(stalkers==game.goal.stalker){
+                return false;
+            }
+            else{
+                return true;
+            }
         }
         else{
             return false;

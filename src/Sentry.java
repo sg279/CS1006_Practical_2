@@ -8,7 +8,19 @@ public class Sentry extends Unit{
     ArrayList<Building> dependentOn = new ArrayList<Building>(Arrays.asList(new Gateway(), new Pylon(), new Assimilator()));
     public boolean canBeBuilt(Game game){
         if (game.minerals>=this.mineralCost&&game.gas>=this.gasCost&&game.availableGateway>=1){
-            return true;
+            int sentries = 0;
+            for (Buildable buildable: game.buildOrder
+                    ) {
+                if(buildable.getClass()==this.getClass()){
+                    sentries++;
+                }
+            }
+            if(sentries==game.goal.sentry){
+                return false;
+            }
+            else{
+                return true;
+            }
         }
         else{
             return false;
