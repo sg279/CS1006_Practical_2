@@ -54,7 +54,6 @@ public class Game {
             ((Unit) buildable).startBuild(this);
         }
         this.calendar.add(event);
-        int h=9;
     }
 
     public void startMining(){
