@@ -169,7 +169,6 @@ public class Game {
         this.tick();
         for(int i=0; i<allBuildables.allBuildables.size();i++){
             Buildable buildable = allBuildables.allBuildables.get(i);
-            //(buildable.getMineralCost()>this.minerals-(this.mineralMiners*41.0/60.0)+(this.mineralMiners%2)*21.0/60.0||!this.hasBeenBuilt(buildable))
             if((!didntBuild(buildable)&&allBuildables.isUseful(buildable,useful)&&buildable.canBeBuilt(this))){
                 Game possibleGame = new Game(this);
                 possibleGame.startBuilding(allBuildables.allBuildables.get(i));

@@ -7,7 +7,7 @@ import java.util.Set;
 public class CS1006Practical3 {
     public static void main (String[] args){
 
-        ArrayList<Buildable> goalBuildables = new ArrayList<Buildable>(Arrays.asList(new DarkTemplar(),new HighTemplar(), new Carrier()));
+        ArrayList<Buildable> goalBuildables = new ArrayList<Buildable>(Arrays.asList(new DarkTemplar(),new Immortal(), new Carrier()));
         Goal goal = new Goal(goalBuildables);
         Boolean goalCompleted=false;
         HashSet<Buildable> useful = new HashSet<>(goalBuildables);
@@ -23,7 +23,7 @@ public class CS1006Practical3 {
             ArrayList<Game> temp = new ArrayList<>();
             for (Game possibleGame: games
                  ) {
-                if (goal.goalCompleted(possibleGame)){
+                if (goal.goalCompleted(possibleGame)&&!goalCompleted){
                     System.out.println("complete");
                     goalCompleted=true;
                 }
