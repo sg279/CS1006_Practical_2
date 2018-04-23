@@ -9,12 +9,45 @@ import java.util.Set;
  */
 public class CS1006Practical3 {
     public static void main (String[] args){
-        if (args.length != 1) {
-            System.out.println("Usage: CS1006Practical3 goalNumber");
-            return;
-        }
+        //Instantiate an empty arraylist of buildables called goalBuildables
         ArrayList<Buildable> goalBuildables = new ArrayList<Buildable>();
+        //If there is more than one command line argument do the following
+        if (args.length > 1) {
+            //Create a new instance of the AllBuildables class called allBuildables, and call the addBuildables method
+            AllBuildables allBuildables = new AllBuildables();
+            allBuildables.addBuildables();
+            //For each item in the command line arguments array try the following
+            for(int i = 0; i<args.length; i++){
+                try{
+                    //Instantiate an integer called number and parse the i command line argument
+                    int number = Integer.parseInt(args[i]);
+                    //Instantiate a new boolean called validBuildable as false
+                    boolean validBuildable = false;
+                    //For each buildable in the list of all buildables do the following
+                    for (Buildable buildable : allBuildables.allBuildables
+                         ) {
+                        //If the buildable class name (parsed to lower case) is the same as the i+1 argument (parsed to lower case), set validBuildable to true
+                        //and add the buildable to the goalBuildables list the number of times the user entered
+                        if(buildable.getClass().getName().toLowerCase().equals(args[i+1].toLowerCase())){
+                            validBuildable=true;
+                            for(int j=0; j<number; j++){
+                                goalBuildables.add(buildable);
+                            }
+                        }
+                    }
+                    //If validBuildable is false, alert the user that the buildable is invalid and that it is being ignored
+                    if(!validBuildable){
+                        System.out.println("Invalid buildable '"+args[i+1]+"'. Ignoring.");
+                    }
 
+                }
+                //Catch an exception if thrown
+                catch (Exception e){
+                }
+            }
+        }
+        //If there is only 1 command line argument do the following
+        else if(args.length==1){
         //depending on what basic option the user wants initialize goalBuildables differently.
         switch (args[0]) {
             case "1":
@@ -37,21 +70,28 @@ public class CS1006Practical3 {
 
                 break;
             case "4":
-                for (int i = 0; i<10; i++)
+                for (int i = 0; i < 10; i++)
                     goalBuildables.add(new Zealot());
-                for (int i = 0; i<7; i++)
+                for (int i = 0; i < 7; i++)
                     goalBuildables.add(new Stalker());
                 goalBuildables.addAll(Arrays.asList(new Sentry(), new Sentry(), new HighTemplar(), new HighTemplar(), new HighTemplar()));
                 break;
             case "5":
-                for (int i = 0; i<8; i++)
+                for (int i = 0; i < 8; i++)
                     goalBuildables.add(new Zealot());
-                for (int i = 0; i<10; i++)
+                for (int i = 0; i < 10; i++)
                     goalBuildables.add(new Stalker());
                 goalBuildables.addAll(Arrays.asList(new Sentry(), new Sentry(), new Immortal(), new Observer(), new Carrier(), new Carrier(), new Carrier(), new DarkTemplar(), new DarkTemplar()));
                 break;
+
+            }
         }
 
+        //If the goalBuildables list is empty, print usage information
+        if(goalBuildables.size()==0){
+            System.out.println("Usage: CS1006Practical3 goalNumber");
+            System.out.println("Usage: CS1006Practical3 <number of units> <unit name>");
+        }
 
         //Create a new goal object with the goalBuildables arraylist as a parameter
         Goal goal = new Goal(goalBuildables);
