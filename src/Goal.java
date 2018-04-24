@@ -189,7 +189,7 @@ public class Goal {
         }
         //Set all of the maximum properties to 0, and increment them by the number of different types of units the goal
         //requires that require them. Doing this to set the maximum number was done by experimentation, as setting the maximum
-        //to the total number of units that require that building resulted in a lot unecessary buildings being built, so the
+        //to the total number of units that require that building resulted in a lot unnecessary buildings being built, so the
         //number of different types of units was used instead.
         this.maxGateways=0;
         if(zealot>0){this.maxGateways++;}

@@ -4,9 +4,9 @@ import java.util.HashSet;
 
 /**
  * This class represents a simulated game at any given second. It stores information about how many of each unit and building a class contains, the order they  were built,
- * the time, the number of minerals and gas the player has, the number of available buildings and probes, a goal, the number of probes mining minerals and gas and a calendar of items
- * that have started being built and the time at which they will finish. It also contains methods important to the running of a game, most importantly,
- * a method that gets all possible moves the play can make from a given game state.
+ * the time, the number of minerals and gas the player has, the number of available buildings (buildings not producing a unit) and probes, a goal, the number of probes mining
+ * minerals and gas and a calendar of items that have started being built and the time at which they will finish. It also contains methods important to the running of a game,
+ * most importantly, a method that gets all possible moves the play can make from a given game state.
  */
 public class Game {
 
@@ -109,7 +109,7 @@ public class Game {
         this.minerals+=(this.mineralMiners*41.0/60.0)-(this.mineralMiners%2)*21.0/60.0;
         //The gas value is increased by the number of gas miners times by 38/60
         this.gas+=this.gasMiners*38/60;
-        //For each event in the calendar, if the even'ts time is the current time, call that event's buildable's build method
+        //For each event in the calendar, if the event's time is the current time, call that event's buildable's build method
         //with this game as a parameter, and remove the item from the calendar, then reduce the index of the item being checked
         //by 1 to avoid skipping over any events
         for (int i=0; i<calendar.size(); i++) {
